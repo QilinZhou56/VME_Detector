@@ -3,16 +3,17 @@ import numpy as np
 import time
 from ultralytics import YOLO  
 
+np.random(42)
 class Detector:
     def __init__(self, videoPath, modelPath):
         self.videoPath = videoPath
         self.modelPath = modelPath
 
-        # Load YOLOv8 model
+        # Load YOLOv8 modelq
         self.model = YOLO(self.modelPath)
 
         # Initialize color list for bounding box visualization
-        self.colorList = np.random.uniform(low=0, high=255, size=(80, 3))  # Adjust based on the actual number of classes
+        self.colorList = np.random.uniform(low=0, high=255, size=(80, 3))  
 
     def onVideo(self):
         cap = cv2.VideoCapture(self.videoPath)
@@ -50,10 +51,26 @@ class Detector:
                     x2 = int(bounding_box[2])
                     y2 = int(bounding_box[3])
 
-                    #width = int(bounding_box[2] - x)
-                    #height = int(bounding_box[3] - y)
+                    width = x2 - x1
+                    height = y2 - y1
 
-                    color = [int(c) for c in self.colorList[cls]]  
+                    color = [int(c) for c in self.colorList[cls]]
+
+                    # Draw bounding box and label
+                    cv2.rectangle(frame, (x1, y1), (x2, y2), color, 2)
+                    label = f"{name} {confidence:.2f}"
+                    cv2.putText(frame, label, (x1, y1 - 10), cv2.FONT_HERSHEY_PLAIN, 1, color, 2)
+
+                    # Additional lines for detailed box corners
+                    lineWidth = min(int(width * 0.3), int(height * 0.3))
+                    cv2.line(frame, (x1, y1), (x1 + lineWidth, y1), color, thickness=5)
+                    cv2.line(frame, (x1, y1), (x1, y1 + lineWidth), color, thickness=5)
+                    cv2.line(frame, (x2, y1), (x2 - lineWidth, y1), color, thickness=5)
+                    cv2.line(frame, (x2, y1), (x2, y1 + lineWidth), color, thickness=5)
+                    cv2.line(frame, (x1, y2), (x1 + lineWidth, y2), color, thickness=5)
+                    cv2.line(frame, (x1, y2), (x1, y2 - lineWidth), color, thickness=5)
+                    cv2.line(frame, (x2, y2), (x2 - lineWidth, y2), color, thickness=5)
+                    cv2.line(frame, (x2, y2), (x2, y2 - lineWidth), color, thickness=5)
 
                     # Draw bounding box and label
                     cv2.rectangle(frame, (x1, y1), (x2, y2), color, 2)
@@ -68,11 +85,11 @@ class Detector:
 
             # Display average FPS
             avg_fps = total_fps / frame_count
-            cv2.putText(frame, f"FPS: {avg_fps:.2f}", (20, 70), cv2.FONT_HERSHEY_PLAIN, 2, (0, 255, 0), 2)
+            cv2.putText(frame, f"FPS: {avg_fps:.2f}", (20, 70), cv2.FONT_HERSHEY_PLAIN, 2, (255, 0, 0), 2)
             cv2.imshow("Result", frame)
 
-            if cv2.waitKey(1) & 0xFF == ord('q'):
+            key = cv2.waitKey(1)
+            if key & 0xFF == ord('q'):
                 break
 
-        cap.release()
         cv2.destroyAllWindows()
