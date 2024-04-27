@@ -24,5 +24,5 @@ Deep Fish Datasets
 ![F1 curve](https://github.com/QilinZhou56/VME_Detector/blob/main/Marine%20Species%20Detection%20OpenCV/YOLOv8_metrics/F1_curve.png)
 ![PR curve](https://github.com/QilinZhou56/VME_Detector/blob/main/Marine%20Species%20Detection%20OpenCV/YOLOv8_metrics/PR_curve.png)
 3. Video Test Example
-[![Deep Ocean](https://img.youtube.com/vi/W3hhkOUMFsY/0.jpg)](https://www.youtube.com/watch?v=W3hhkOUMFsY
+![Deep Ocean](https://img.youtube.com/vi/W3hhkOUMFsY/0.jpg)(https://www.youtube.com/watch?v=W3hhkOUMFsY
    
