@@ -20,5 +20,7 @@ Deep Fish Datasets
    - Seven Classes: Fish, Crab, Human, Trash, Jellyfish, Coral Reef, Fish Group
    - Dataset Split: Train Set: 70%; Validation Set: 10%; Test Set: 20% (640x640)
 2. Metrics
-   -[Confusion Matrix](Marine Species Detection OpenCV/YOLOv8_metrics/confusion_matrix.png)
+   -![Confusion Matrix](Marine Species Detection OpenCV/YOLOv8_metrics/confusion_matrix.png)
+   -![F1 curve](Marine Species Detection OpenCV/YOLOv8_metrics/F1_curve.png)
+   -![PR curve](Marine Species Detection OpenCV/YOLOv8_metrics/PR_curve.png)
    
