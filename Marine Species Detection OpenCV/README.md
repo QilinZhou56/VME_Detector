@@ -17,8 +17,8 @@ Deep Fish Datasets
 
 ## Training (YOLOv8)
 1. Underwater Object Detection Dataset [Kaggle Link](https://www.kaggle.com/datasets/akshatsng/underwater-dataset-for-8-classes-with-label?select=valid)
-   Seven Classes: Fish, Crab, Human, Trash, Jellyfish, Coral Reef, Fish Group
-   Dataset Split: Train Set: 70%; Validation Set: 10%; Test Set: 20% (640x640)
+   - Seven Classes: Fish, Crab, Human, Trash, Jellyfish, Coral Reef, Fish Group
+   - Dataset Split: Train Set: 70%; Validation Set: 10%; Test Set: 20% (640x640)
 2. Metrics
--[Confusion Matrix](confusion_matrix.png)
+   -[Confusion Matrix](Marine Species Detection OpenCV/YOLOv8_metrics/confusion_matrix.png)
    
