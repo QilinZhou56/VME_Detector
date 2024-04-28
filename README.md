@@ -2,6 +2,7 @@
 
 ## 1. Classification of Visually Similar Species
 
+![schema](Marine Species Detection OpenCV/schema.png)
 ### Overview
 This part of the project focuses on distinguishing between species that are visually similar using advanced computer vision techniques.
 
