@@ -50,9 +50,3 @@ Sufficient images for each selected species will be gathered from the fathom dat
 ```bash
 streamlit run application/app.py
 
-
-### Model Development
-An object detection framework like YOLO or SSD will be applied to localize and classify multiple objects in images.
-
-### Application Development
-We aim to develop an application that inputs camera trap images or underwater video feeds and outputs counts and locations of endangered species sightings.
