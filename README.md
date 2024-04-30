@@ -46,6 +46,11 @@ Focusing on endangered species, this project aims to detect and count individual
 ### Data Collection
 Sufficient images for each selected species will be gathered from the fathom dataset or deepfish.ai, including various contexts and environments.
 
+## 3. Application Use
+```bash
+streamlit run application/app.py
+
+
 ### Model Development
 An object detection framework like YOLO or SSD will be applied to localize and classify multiple objects in images.
 
