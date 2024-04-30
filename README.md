@@ -48,5 +48,5 @@ Sufficient images for each selected species will be gathered from the fathom dat
 
 ## 3. Application Use
 ```bash
-streamlit run application/app.py
+streamlit run Marine Species Detection OpenCV/application/app.py
 
