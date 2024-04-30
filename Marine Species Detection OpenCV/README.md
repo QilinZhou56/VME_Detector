@@ -1,7 +1,7 @@
 # Marine Species Detection OpenCV
 # Referenced Tutorials
-1. Youtube OpenCV channel [TheCodingBug] (https://www.youtube.com/hashtag/thecodingbug).
-2. MBARI Deep-Sea Guide [website link](http://dsg.mbari.org/dsg/browsetreesearch/concept/marine%20organism)
+1. Youtube OpenCV channel ![TheCodingBug] (https://www.youtube.com/hashtag/thecodingbug).
+2. MBARI Deep-Sea Guide ![website link](http://dsg.mbari.org/dsg/browsetreesearch/concept/marine%20organism)
 3. Yolov-8 streamlit App Guide [GitHub link)(https://github.com/CodingMantras/yolov8-streamlit-detection-tracking/tree/master)
    
 # SSD 
