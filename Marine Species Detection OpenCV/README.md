@@ -5,8 +5,9 @@
 3. Yolov-8 streamlit App Guide [GitHub link](https://github.com/CodingMantras/yolov8-streamlit-detection-tracking/tree/master)
 
 
-# Web Application with customized models and pretrained models
+# Real-Time Web Application with customized models and pretrained models
 ![Web Page](https://github.com/QilinZhou56/VME_Detector/blob/main/Marine%20Species%20Detection%20OpenCV/Webpage.png)
+![Web Page2](https://github.com/QilinZhou56/VME_Detector/blob/main/Marine%20Species%20Detection%20OpenCV/Webpage2.png)
 # SSD 
 SSD (Single Shot MultiBox Detector): This is the architecture used for the model. SSD is designed for object detection, which means it predicts both bounding boxes and class labels for each detected object in an image. It does this in a single forward pass of the network, making it efficient and fast.
 # Models
