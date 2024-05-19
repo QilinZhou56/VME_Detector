@@ -18,7 +18,7 @@ st.set_page_config(
 )
 
 # Main page heading
-st.title("Find the species of your interest 🪸")
+st.title("Find the species of your interest 🐟")
 
 # Make a bar chart of the top N concepts by bounding boxes
 N = st.slider("Select number of top concepts to display", 5, 20, 11)

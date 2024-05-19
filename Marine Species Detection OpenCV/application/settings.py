@@ -29,6 +29,8 @@ DEFAULT_DETECT_IMAGE = IMAGES_DIR / 'fish1_detected.png'
 
 # Videos config
 VIDEO_DIR = ROOT / 'videos'
+DEFAULT_VIDEO = VIDEO_DIR / 'beautiful_coral.mp4'
+DEFAULT_SAD_VIDEO = VIDEO_DIR  / 'sad_corals.mp4'
 VIDEO_1_PATH = VIDEO_DIR / 'fish1.mp4'
 VIDEO_2_PATH = VIDEO_DIR / 'fish2.mp4'
 VIDEO_3_PATH = VIDEO_DIR / 'fish3.mp4'
@@ -51,19 +53,21 @@ VIDEOS_DICT = {
 
 # ML Model config
 MODEL_DIR = ROOT / 'weights'
-DETECTION_MODEL1 = MODEL_DIR /  'best.pt'
+DETECTION_MODEL1 = MODEL_DIR /  'underwater_best.pt'
 DETECTION_MODEL2 = MODEL_DIR / 'fathom_best.pt'
 """
 SEGMENTATION_MODEL = MODEL_DIR / 'yolov8n-seg.pt'
 """
-ClASSIFICATION_MODEL1 = MODEL_DIR / 'yolov8n.pt'
-HEALTH_MODEL_DICT = {'YOLOv8': MODEL_DIR / 'healthy_yolov8.pt',
+ClASSIFICATION_MODEL1 = MODEL_DIR / 'coral_yolov8x_best.pt'
+HEALTH_MODEL_DICT = {'ViT': MODEL_DIR / 'best_vit_healthy.pth', 'EfficientNet': MODEL_DIR / 'best_efficientnet_healthy.h5', 'YOLOv8': MODEL_DIR / 'healthy_best_yolov8x.pt',
 'Customized': MODEL_DIR / 'healthy_custom_model.h5'}
 STYLE_DICT = {
     'Shinkai': MODEL_DIR / 'Shinkai.h5',
     'Hosoda': MODEL_DIR / 'Hosoda.h5',
     'Paprika': MODEL_DIR / 'Paprika.h5',
    'Hayao': MODEL_DIR / 'Hayao.h5',
+   'Pollution': MODEL_DIR / 'g_model_healthy_to_bleached_000010.h5', #'g_model_healthy_to_bleached.h5',
+   'Recovery': MODEL_DIR / 'g_model_bleached_to_healthy000010.h5' #'g_model_bleached_to_healthy.h5'
 }
 
 
