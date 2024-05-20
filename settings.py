@@ -22,13 +22,13 @@ SOURCES_LIST = [IMAGE, VIDEO, YOUTUBE]
 
 # Images config
 
-IMAGES_DIR = ROOT / 'images'
+IMAGES_DIR = ROOT / 'Marine Species Detection OpenCV'/ 'images'
 DEFAULT_IMAGE = IMAGES_DIR / 'fish1.png'
 DEFAULT_DETECT_IMAGE = IMAGES_DIR / 'fish1_detected.png'
 
 
 # Videos config
-VIDEO_DIR = ROOT / 'videos'
+VIDEO_DIR = ROOT / 'Marine Species Detection OpenCV'/ 'videos'
 DEFAULT_VIDEO = VIDEO_DIR / 'beautiful_coral.mp4'
 DEFAULT_SAD_VIDEO = VIDEO_DIR  / 'sad_corals.mp4'
 VIDEO_1_PATH = VIDEO_DIR / 'fish1.mp4'
@@ -52,7 +52,7 @@ VIDEOS_DICT = {
 }
 
 # ML Model config
-MODEL_DIR = ROOT / 'weights'
+MODEL_DIR = ROOT / 'Marine Species Detection OpenCV'/ 'weights'
 DETECTION_MODEL1 = MODEL_DIR /  'underwater_best.pt'
 DETECTION_MODEL2 = MODEL_DIR / 'fathom_best.pt'
 """
