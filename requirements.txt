@@ -12,7 +12,7 @@ streamlit
 tqdm
 ultralytics
 git+https://www.github.com/keras-team/keras-contrib.git
-tensorflow==2.8.0
+tensorflow==2.11.0
 tensorflow-addons==0.15.0
 keras
 torch
