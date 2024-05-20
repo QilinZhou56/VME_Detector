@@ -9,12 +9,12 @@ pydeck
 pytube
 Requests
 streamlit
-tensorflow
-Keras
 tqdm
 ultralytics
 git+https://www.github.com/keras-team/keras-contrib.git
-tensorflow_addons
+tensorflow==2.9.1  # Use a compatible TensorFlow version
+tensorflow-addons==0.17.0  # Use a compatible TF Addons version
+keras==2.9.0  # Match Keras version
 torch
 transformers
 Pillow
