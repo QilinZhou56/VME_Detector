@@ -10,6 +10,7 @@ pydeck
 pytube
 Requests
 streamlit
+mediapipe
 tensorflow
 tqdm
 ultralytics
