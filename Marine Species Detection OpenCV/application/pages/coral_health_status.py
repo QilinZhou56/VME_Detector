@@ -8,7 +8,8 @@ import random
 import statsmodels.api as sm
 
 # Set the base directory for images
-base_dir = '/content/drive/Shareddrives/Computer Vision Project/Dataset/Coral Health'
+base_dir = './Coral Health'
+full_path = os.path.abspath(base_dir)
 
 # Setting page layout
 st.set_page_config(
@@ -25,7 +26,7 @@ analyze_button = st.sidebar.button("Analyze Random Image")
 eda_button = st.sidebar.button("Perform EDA on All Images")
 def load_image_properties(category, seed=42):
     random.seed(seed)
-    category_path = os.path.join(base_dir, category)
+    category_path = os.path.join(full_path, category)
     image_files = os.listdir(category_path)
     random_image_file = random.choice(image_files)
     image_path = os.path.join(category_path, random_image_file)

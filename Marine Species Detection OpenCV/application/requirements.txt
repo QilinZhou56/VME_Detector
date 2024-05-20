@@ -38,3 +38,4 @@ git+https://www.github.com/keras-team/keras-contrib.git
 tensorflow-addons
 torch
 transformers
+statsmodels==0.12.0

@@ -76,8 +76,6 @@ source_radio = st.sidebar.radio(
     "Select Source", settings.SOURCES_LIST)
 source_img = None
 
-HEALTH_DIR = '/content/drive/Shareddrives/Computer Vision Project/Dataset/Coral Health'
-
 # If image is selected
 if source_radio == settings.IMAGE:
     source_img = st.sidebar.file_uploader(

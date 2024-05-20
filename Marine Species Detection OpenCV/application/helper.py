@@ -135,8 +135,11 @@ def _display_generated_frames(param_path, image, st_frame, upload, video):
 
     if upload == False and video == False:
       # Load your datasets
-      train_healthy_dataset = load_dataset('/content/drive/Shareddrives/Computer Vision Project/Dataset/Coral Health/healthy_corals', batch_size=1)
-      train_bleached_dataset = load_dataset('/content/drive/Shareddrives/Computer Vision Project/Dataset/Coral Health/bleached_corals', batch_size=1)
+      base_dir = './Coral Health'
+      full_path = os.path.abspath(base_dir)
+
+      train_healthy_dataset = load_dataset(full_path + '/healthy_corals', batch_size=1)
+      train_bleached_dataset = load_dataset(full_path + '/bleached_corals', batch_size=1)
 
       example_healthy = next(iter(train_healthy_dataset))
       example_bleached = next(iter(train_bleached_dataset))
