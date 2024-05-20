@@ -10,7 +10,7 @@ pydeck
 pytube
 Requests
 streamlit
-tensorflo
+tensorflow
 tqdm
 ultralytics
 git+https://www.github.com/keras-team/keras-contrib.git
