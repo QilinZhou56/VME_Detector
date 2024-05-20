@@ -1,18 +1,7 @@
 from pathlib import Path
-import sys
 
-# Get the absolute path of the current file
 file_path = Path(__file__).resolve()
-
-# Get the parent directory of the current file
-root_path = file_path.parent.parent
-
-# Add the root path to the sys.path list if it is not already there
-if root_path not in sys.path:
-    sys.path.append(str(root_path))
-
-# Get the relative path of the root directory with respect to the current working directory
-ROOT = root_path.relative_to(Path.cwd())
+ROOT = file_path.parent  # This is now the root directory
 
 # Sources
 IMAGE = 'Image'
@@ -21,7 +10,6 @@ YOUTUBE = 'YouTube'
 SOURCES_LIST = [IMAGE, VIDEO, YOUTUBE]
 
 # Images config
-
 IMAGES_DIR = ROOT / 'Marine Species Detection OpenCV'/ 'images'
 DEFAULT_IMAGE = IMAGES_DIR / 'fish1.png'
 DEFAULT_DETECT_IMAGE = IMAGES_DIR / 'fish1_detected.png'
