@@ -13,7 +13,7 @@ tensorflow
 tqdm
 ultralytics
 git+https://www.github.com/keras-team/keras-contrib.git
-tensorflow-addons
+tensorflow_addons
 torch
 transformers
 Pillow
