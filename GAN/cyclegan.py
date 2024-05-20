@@ -1,7 +1,7 @@
 import tensorflow as tf
 from tensorflow.keras import layers, Model, Input
 from tensorflow import keras
-import tensorflow-addons as tfa
+import tensorflow_addons as tfa
 
 OUTPUT_CHANNELS = 3
 
