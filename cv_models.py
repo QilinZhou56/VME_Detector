@@ -27,29 +27,27 @@ st.title("Computer Vision of Marine Species, Protect Our Environment 🐟🪸�
 st.sidebar.header("CV Datasets")
 
 # Model Options
-model_type = st.sidebar.radio(
-    "Select Dataset", ['Healthy vs Bleached Corals', 'Style Transfer', 'Marine General', 'FathomNet', 'CoralNet', 'Zero Shot'])
 st.write("Zero Shot could only be implemented locally, due to streamlit Cloud limit!!!")
-confidence = float(st.sidebar.slider(
-    "Select Detection Model Confidence", 25, 100, 40)) / 100
-
 param_path = None
-# Selecting Detection Or Segmentation
-if model_type == 'Marine General':
-  model_path = Path(settings.DETECTION_MODEL1)
-elif model_type == 'FathomNet':
-  model_path = Path(settings.DETECTION_MODEL2)
-elif model_type == 'CoralNet':
-  model_path = Path(settings.ClASSIFICATION_MODEL1)
-elif model_type == 'Healthy vs Bleached Corals':
+
+# Selecting Detection Or Classification
+if st.sidebar.button('Healthy vs Bleached Corals'):
   model_select = st.sidebar.selectbox(
         "Choose a health status classification model...", settings.HEALTH_MODEL_DICT.keys())
   model_path = Path(settings.HEALTH_MODEL_DICT.get(model_select))
-elif model_type == 'Style Transfer':
+if  st.sidebar.button('Style Transfer'):
   source_param = st.sidebar.selectbox(
         "Choose a style...", settings.STYLE_DICT.keys())
   param_path = Path(settings.STYLE_DICT.get(source_param))
-
+if st.sidebar.button('Marine General'):
+  model_path = Path(settings.DETECTION_MODEL1)
+if st.sidebar.button('FathomNet'):
+  model_path = Path(settings.DETECTION_MODEL2)
+if  st.sidebar.button('CoralNet'):
+  model_path = Path(settings.ClASSIFICATION_MODEL1)
+    
+confidence = float(st.sidebar.slider(
+    "Select Detection Model Confidence", 25, 100, 40)) / 100
 
 # Load Pre-trained ML Model
 if model_type != 'Style Transfer' and model_type != 'Zero Shot':
