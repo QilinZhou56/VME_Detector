@@ -64,7 +64,7 @@ if model_type != 'Style Transfer' and model_type != 'Zero Shot':
             model = helper.load_vit_model(model_path)
         else:
             model = helper.load_yolo_model(model_path)
-    else:
+    if model_type is not None:
         model = helper.load_yolo_model(model_path)
 else:
         model = param_path
