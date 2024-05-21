@@ -9,14 +9,6 @@ import pydeck as pdk
 # FathomNet API interactions and other utilities
 from fathomnet.api import boundingboxes, images
 
-# Setting page layout
-st.set_page_config(
-    page_title="Species Map",
-    page_icon="🐟",
-    layout="wide",
-    initial_sidebar_state="expanded"
-)
-
 # Main page heading
 st.title("Find the species of your interest 🐟")
 
