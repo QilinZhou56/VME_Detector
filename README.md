@@ -9,6 +9,7 @@ Our primary repository is [here](https://github.com/jaskcodes/Reef-madness/tree/
 ## Application Use （Local)
 ```bash
 streamlit run cv_models.py
+```bash
 
 ## 1. Classification of Visually Similar Species
 
