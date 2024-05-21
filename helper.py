@@ -20,16 +20,16 @@ import random
 from matplotlib import pyplot as plt
 import settings
 
-@st.cache(ttl=24*3600)
+@st.cache_data(ttl=24*3600)
 def load_yolo_model(model_path):
     model = YOLO(model_path)
     return model
 
-@st.cache(ttl=24*3600)
+@st.cache_data(ttl=24*3600)
 def load_custom_or_pretrained_model(model_path):
     return keras_load_model(model_path)
 
-@st.cache(ttl=24*3600)
+@st.cache_data(ttl=24*3600)
 def load_vit_model(model_path):
     model_name = "google/vit-base-patch16-224"
     image_processor = AutoImageProcessor.from_pretrained(model_name, do_rescale=False)
@@ -48,7 +48,7 @@ def load_vit_model(model_path):
     model.eval()
     return model
 
-@st.cache(ttl=24*3600, hash_funcs={"MyUnhashableClass": lambda _: None})
+@st.cache_data(ttl=24*3600, hash_funcs={"MyUnhashableClass": lambda _: None})
 def load_owlvit_model():
     processor = OwlViTProcessor.from_pretrained("google/owlvit-base-patch32")
     model = OwlViTForObjectDetection.from_pretrained("google/owlvit-base-patch32")
@@ -75,7 +75,7 @@ def load_image(image_input):
     image = (image / 127.5) - 1  # Normalize images to [-1, 1]
     return image
     
-@st.cache(ttl=24*3600, hash_funcs={"MyUnhashableClass": lambda _: None})
+@st.cache_data(ttl=24*3600, hash_funcs={"MyUnhashableClass": lambda _: None})
 def load_dataset(path, batch_size):
     dataset = tf.data.Dataset.list_files(path + '/*.jpg')  # Adjust pattern if needed
     dataset = dataset.map(load_image, num_parallel_calls=tf.data.AUTOTUNE)
