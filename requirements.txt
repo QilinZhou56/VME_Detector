@@ -12,7 +12,7 @@ streamlit
 tqdm
 ultralytics
 git+https://www.github.com/keras-team/keras-contrib.git
-keras
+keras<3.0.0
 torch
 transformers
 Pillow
