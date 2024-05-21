@@ -32,18 +32,23 @@ param_path = None
 
 # Selecting Detection Or Classification
 if st.sidebar.button('Healthy vs Bleached Corals'):
+  model_type = 'Healthy vs Bleached Corals'
   model_select = st.sidebar.selectbox(
         "Choose a health status classification model...", settings.HEALTH_MODEL_DICT.keys())
   model_path = Path(settings.HEALTH_MODEL_DICT.get(model_select))
 if  st.sidebar.button('Style Transfer'):
+  model_type = 'Style Transfer'
   source_param = st.sidebar.selectbox(
         "Choose a style...", settings.STYLE_DICT.keys())
   param_path = Path(settings.STYLE_DICT.get(source_param))
 if st.sidebar.button('Marine General'):
+  model_type = 'Marine General'
   model_path = Path(settings.DETECTION_MODEL1)
 if st.sidebar.button('FathomNet'):
+  model_type = 'FathomNet'
   model_path = Path(settings.DETECTION_MODEL2)
-if  st.sidebar.button('CoralNet'):
+if st.sidebar.button('CoralNet'):
+  model_type = 'CoralNet'
   model_path = Path(settings.ClASSIFICATION_MODEL1)
     
 confidence = float(st.sidebar.slider(
