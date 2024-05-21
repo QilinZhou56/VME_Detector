@@ -57,19 +57,15 @@ confidence = float(st.sidebar.slider(
 
 # Load Pre-trained ML Model
 if model_type != 'Style Transfer' and model_type != 'Zero Shot':
-    try:
-        if model_type == 'Healthy vs Bleached Corals':
-            if model_select != 'ViT' and model_select != 'YOLOv8':
-                model = helper.load_custom_or_pretrained_model(model_path)
-            elif model_select == 'ViT':
-                model = helper.load_vit_model(model_path)
-            else:
-                model = helper.load_yolo_model(model_path)
+    if model_type == 'Healthy vs Bleached Corals':
+        if model_select != 'ViT' and model_select != 'YOLOv8':
+            model = helper.load_custom_or_pretrained_model(model_path)
+        elif model_select == 'ViT':
+            model = helper.load_vit_model(model_path)
         else:
             model = helper.load_yolo_model(model_path)
-    except Exception as ex:
-        st.error(f"Unable to load model. Check the specified path: {model_path}")
-        st.error(ex)
+    else:
+        model = helper.load_yolo_model(model_path)
 else:
         model = param_path
 
