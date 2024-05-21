@@ -6,7 +6,7 @@ Jaskirat, Grey, Qilin (CAPPies)
 ## Related repository:
 Our primary repository is [here](https://github.com/jaskcodes/Reef-madness/tree/main/detection_opencv_streamlit/application). We use **this only to connect with streamlit** with trained weights files and image repositories. 
 
-## Application Use （Local)
+## Application Use （Local; preferred one as all tasks worked well)
 ```bash
 streamlit run cv_models.py
 ```
