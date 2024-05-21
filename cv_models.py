@@ -29,6 +29,7 @@ st.sidebar.header("CV Datasets")
 # Model Options
 model_type = st.sidebar.radio(
     "Select Dataset", ['Healthy vs Bleached Corals', 'Style Transfer', 'Marine General', 'FathomNet', 'CoralNet', 'Zero Shot'])
+st.write("Zero Shot could only be implemented locally, due to streamlit Cloud limit!!!")
 confidence = float(st.sidebar.slider(
     "Select Detection Model Confidence", 25, 100, 40)) / 100
 
@@ -75,7 +76,7 @@ st.sidebar.header("Image/Video Config")
 source_radio = st.sidebar.radio(
     "Select Source", settings.SOURCES_LIST)
 source_img = None
-
+st.write("Only choose upload image for implementation in cloud, due to streamlit Cloud limit!!!")
 # If image is selected
 if source_radio == settings.IMAGE:
     source_img = st.sidebar.file_uploader(
