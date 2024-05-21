@@ -136,7 +136,7 @@ def _display_generated_frames(param_path, image, st_frame, upload, video):
 
     if upload == False and video == False:
       # Load your datasets
-      base_dir = './Coral Health'
+      base_dir = './Marine Species Detection OpenCV/Coral Health'
       full_path = os.path.abspath(base_dir)
 
       train_healthy_dataset = load_dataset(full_path + '/healthy_corals', batch_size=1)
