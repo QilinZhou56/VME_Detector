@@ -74,7 +74,8 @@ def load_image(image_input):
     image = tf.image.resize(image, [256, 256])
     image = (image / 127.5) - 1  # Normalize images to [-1, 1]
     return image
-
+    
+@st.cache_data(hash_funcs={"MyUnhashableClass": lambda _: None}
 def load_dataset(path, batch_size):
     dataset = tf.data.Dataset.list_files(path + '/*.jpg')  # Adjust pattern if needed
     dataset = dataset.map(load_image, num_parallel_calls=tf.data.AUTOTUNE)
