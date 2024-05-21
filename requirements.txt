@@ -17,5 +17,5 @@ torch
 transformers
 Pillow
 statsmodels
-tensorflow==2.13.0
-tensorflow-addons==0.23.0
+tensorflow
+tensorflow-addons
