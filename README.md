@@ -4,7 +4,7 @@
 Jaskirat, Grey, Qilin (CAPPies)
 
 ## Related repository:
-We initially have our repository [here](https://github.com/jaskcodes/Reef-madness/tree/main/detection_opencv_streamlit/application). We moved here after upgrading our git account for larger file push.
+Our primary repository is [here](https://github.com/jaskcodes/Reef-madness/tree/main/detection_opencv_streamlit/application). We use **this only to connect with streamlit** with trained weights files and image repositories.
 
 ## 1. Classification of Visually Similar Species
 
