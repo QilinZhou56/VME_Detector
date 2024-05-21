@@ -20,16 +20,16 @@ import random
 from matplotlib import pyplot as plt
 import settings
 
-@st.cache_data
+@st.cache
 def load_yolo_model(model_path):
     model = YOLO(model_path)
     return model
 
-@st.cache_data
+@st.cache
 def load_custom_or_pretrained_model(model_path):
     return keras_load_model(model_path)
 
-@st.cache_data
+@st.cache
 def load_vit_model(model_path):
     model_name = "google/vit-base-patch16-224"
     image_processor = AutoImageProcessor.from_pretrained(model_name, do_rescale=False)
@@ -48,7 +48,7 @@ def load_vit_model(model_path):
     model.eval()
     return model
 
-@st.cache_data
+@st.cache
 def load_owlvit_model():
     processor = OwlViTProcessor.from_pretrained("google/owlvit-base-patch32")
     model = OwlViTForObjectDetection.from_pretrained("google/owlvit-base-patch32")
