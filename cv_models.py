@@ -11,6 +11,7 @@ import torch
 import settings
 import helper
 import numpy as np
+from pages import coral_health_status, species_map
 
 # Setting page layout
 st.set_page_config(
@@ -19,6 +20,20 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded"
 )
+
+
+# Dictionary to store the pages and their corresponding functions
+pages = {
+    "Coral Health EDA": coral_health_status,
+    "FathomNet EDA": species_map
+}
+
+# Sidebar for navigation
+st.sidebar.title("Navigation")
+page = st.sidebar.radio("Go to", list(pages.keys()))
+
+# Load the selected page
+pages[page].run()
 
 # Main page heading
 st.title("Computer Vision of Marine Species, Protect Our Environment 🐟🪸🪼🦀️🌊⭐")
