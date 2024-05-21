@@ -8,7 +8,7 @@ import random
 import statsmodels.api as sm
 
 # Set the base directory for images
-base_dir = './Coral Health'
+base_dir = '../Coral Health'
 full_path = os.path.abspath(base_dir)
 
 # Sidebar for actions
