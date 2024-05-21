@@ -287,6 +287,73 @@ def _display_detected_frames(conf, model, st_frame, image, target_size, yolov, p
         image_with_text = display_predictions(image, text)
         st_frame.image(image_with_text, channels="BGR", use_column_width=True)
 
+def _display_classify_frames(conf, model, st_frame, image, target_size, yolov, pth):
+    if yolov and not pth:
+        # Convert image from BGR to RGB since CV2 uses BGR by default
+        image_rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+
+        # Perform inference on an image using the YOLOv8 classification model
+        results = model.predict(image_rgb, conf=conf)
+
+        st.write("Classification Results:")
+        if results:
+            # Initialize an empty list to store the label text
+            labels = []
+
+            # Iterate through the results
+            for r in results:
+                # Determine the number of available class predictions (up to 5)
+                num_classes = min(5, len(r.probs.top5))
+
+                # Iterate through the available class predictions
+                for c in range(num_classes):
+                    class_id = r.probs.top5[c]
+                    class_confidence = r.probs.top5conf.cpu().numpy()[c]
+                    class_name = r.names[class_id]
+                    
+                    # Add the class name and confidence to the label list
+                    labels.append(f"{class_name}: {class_confidence:.2f}")
+
+            # Prepare the label text
+            label = ", ".join(labels)
+
+            # Get the size of the label
+            label_size = cv2.getTextSize(label, cv2.FONT_HERSHEY_SIMPLEX, 1.25, 3)[0]
+            label_pos = (10, 30)  # Position of the label on the image
+
+            # Draw the label on the image
+            cv2.putText(image_rgb, label, label_pos, cv2.FONT_HERSHEY_SIMPLEX, 1.25, (0, 255, 0), 3)
+
+            # Convert back to BGR for display in Streamlit
+            image_bgr = cv2.cvtColor(image_rgb, cv2.COLOR_RGB2BGR)
+            st_frame.image(image_bgr, caption='Classified Image', use_column_width=True)
+
+    elif yolov == False and pth == True:
+        # Classify image using ViT model
+        processed_image = preprocess_image_pytorch(image, target_size)
+        device = next(model.parameters()).device
+        processed_image = processed_image.to(device)
+        with torch.no_grad():
+            output = model(processed_image)
+            logits = output.logits
+            probabilities = torch.nn.functional.softmax(logits, dim=1)
+            probability = probabilities[0][1].item()
+        coral_status = "Bleached" if probability > 0.5 else "Healthy"
+        confidence = probability if coral_status == "Bleached" else 1 - probability
+        text = f"Prediction: {coral_status} (Confidence: {confidence:.2%})"
+        image_with_text = display_predictions(image, text)
+        st_frame.image(image_with_text, caption="Coral Health Prediction", channels="BGR", use_column_width=True)
+    else:
+        # Basic model prediction
+        processed_image = preprocess_image(image, target_size)
+        predictions = model.predict(processed_image)
+        probability = predictions[0][0]
+        coral_status = "Bleached" if probability > 0.5 else "Healthy"
+        confidence = probability if coral_status == "Bleached" else 1 - probability
+        text = f"Prediction: {coral_status} (Confidence: {confidence:.2%})"
+        image_with_text = display_predictions(image, text)
+        st_frame.image(image_with_text, channels="BGR", use_column_width=True)
+
 
 def play_youtube_video(conf, model, target_size, yolov, pth, Classify1, Classify2, Detect, Generate):
     source_youtube = st.sidebar.text_input("YouTube Video URL")
