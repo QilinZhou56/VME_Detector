@@ -15,8 +15,20 @@ streamlit run cv_models.py
 This is the associated [URL](https://vmedetector-7bsaxaqq9o7wrahnbnbqxk.streamlit.app/). **Only upload images and explore species map EDA in this case**. Due to 1GB limit in streamlit cloud, real-time classification or detection, zero-shot detection, and access to local image repositories may fail in the mid of execution. Whenever it cracks, click **reboot** to reactivate the app in **manage my app**.
 
 ## Directory 
-├── app
-│   ├── css
+```plaintext
+├── GAN
+├── cv_models.py
+├── settings.py
+├── helper.py
+├── pages
+├── requirements.txt
+├── Marine Species Detection Open CV
+│   ├── index.html
+│   ├── js
+│   │   ├── **/*.js
+│   └── partials/template
+├── pages
+│   ├── 
 │   │   ├── **/*.css
 │   ├── favicon.ico
 │   ├── images
@@ -24,14 +36,6 @@ This is the associated [URL](https://vmedetector-7bsaxaqq9o7wrahnbnbqxk.streamli
 │   ├── js
 │   │   ├── **/*.js
 │   └── partials/template
-├── dist (or build)
-├── node_modules
-├── bower_components (if using bower)
-├── test
-├── Gruntfile.js/gulpfile.js
-├── README.md
-├── package.json
-├── bower.json (if using bower)
 └── .gitignore
 
 ## 1. Classification of Visually Similar Species
