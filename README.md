@@ -4,7 +4,11 @@
 Jaskirat, Grey, Qilin (CAPPies)
 
 ## Related repository:
-Our primary repository is [here](https://github.com/jaskcodes/Reef-madness/tree/main/detection_opencv_streamlit/application). We use **this only to connect with streamlit** with trained weights files and image repositories.
+Our primary repository is [here](https://github.com/jaskcodes/Reef-madness/tree/main/detection_opencv_streamlit/application). We use **this only to connect with streamlit** with trained weights files and image repositories. 
+
+## Application Use （Local)
+```bash
+streamlit run cv_models.py
 
 ## 1. Classification of Visually Similar Species
 
@@ -52,7 +56,4 @@ Focusing on endangered species, this project aims to detect and count individual
 ### Data Collection
 Sufficient images for each selected species will be gathered from the fathom dataset or deepfish.ai, including various contexts and environments.
 
-## 3. Application Use
-```bash
-streamlit run cv_models.py
 
