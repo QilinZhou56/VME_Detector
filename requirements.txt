@@ -12,11 +12,10 @@ streamlit
 tqdm
 ultralytics
 git+https://www.github.com/keras-team/keras-contrib.git
-tensorflow
-tensorflow-addons
 keras
 torch
 transformers
 Pillow
 statsmodels
-keras.src.engine
+tensorflow==2.13.0
+tensorflow-addons==0.18.0
