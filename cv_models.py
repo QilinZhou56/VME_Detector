@@ -29,47 +29,54 @@ st.sidebar.header("CV Datasets")
 # Model Options
 st.write("Zero Shot could only be implemented locally, due to streamlit Cloud limit!!!")
 param_path = None
-model_type = None
+# Initialize session state for model type and path
+if 'model_type' not in st.session_state:
+    st.session_state.model_type = None
+if 'model_path' not in st.session_state:
+    st.session_state.model_path = None
+if 'model_select' not in st.session_state:
+    st.session_state.model_select = None
 
 # Selecting Detection Or Classification
 if st.sidebar.button('Healthy vs Bleached Corals'):
-  model_type = 'Healthy vs Bleached Corals'
-  model_select = st.sidebar.selectbox(
+    st.session_state.model_type = 'Healthy vs Bleached Corals'
+    st.session_state.model_select = st.sidebar.selectbox(
         "Choose a health status classification model...", settings.HEALTH_MODEL_DICT.keys())
-  model_path = Path(settings.HEALTH_MODEL_DICT.get(model_select))
-if  st.sidebar.button('Style Transfer'):
-  model_type = 'Style Transfer'
-  source_param = st.sidebar.selectbox(
+    st.session_state.model_path = Path(settings.HEALTH_MODEL_DICT.get(st.session_state.model_select))
+if st.sidebar.button('Style Transfer'):
+    st.session_state.model_type = 'Style Transfer'
+    source_param = st.sidebar.selectbox(
         "Choose a style...", settings.STYLE_DICT.keys())
-  param_path = Path(settings.STYLE_DICT.get(source_param))
+    param_path = Path(settings.STYLE_DICT.get(source_param))
 if st.sidebar.button('Marine General'):
-  model_type = 'Marine General'
-  model_path = Path(settings.DETECTION_MODEL1)
+    st.session_state.model_type = 'Marine General'
+    st.session_state.model_path = Path(settings.DETECTION_MODEL1)
 if st.sidebar.button('FathomNet'):
-  model_type = 'FathomNet'
-  model_path = Path(settings.DETECTION_MODEL2)
+    st.session_state.model_type = 'FathomNet'
+    st.session_state.model_path = Path(settings.DETECTION_MODEL2)
 if st.sidebar.button('CoralNet'):
-  model_type = 'CoralNet'
-  model_path = Path(settings.ClASSIFICATION_MODEL1)
-    
+    st.session_state.model_type = 'CoralNet'
+    st.session_state.model_path = Path(settings.ClASSIFICATION_MODEL1)
+
 confidence = float(st.sidebar.slider(
     "Select Detection Model Confidence", 25, 100, 40)) / 100
 
 # Load Pre-trained ML Model
-if model_type != 'Style Transfer' and model_type != 'Zero Shot':
-    if model_type == 'Healthy vs Bleached Corals':
-        if model_select != 'ViT' and model_select != 'YOLOv8':
-            model = helper.load_custom_or_pretrained_model(model_path)
-        elif model_select == 'ViT':
-            model = helper.load_vit_model(model_path)
+model = None
+if st.session_state.model_type != 'Style Transfer' and st.session_state.model_type != 'Zero Shot':
+    if st.session_state.model_type == 'Healthy vs Bleached Corals':
+        if st.session_state.model_select != 'ViT' and st.session_state.model_select != 'YOLOv8':
+            model = helper.load_custom_or_pretrained_model(st.session_state.model_path)
+        elif st.session_state.model_select == 'ViT':
+            model = helper.load_vit_model(st.session_state.model_path)
         else:
-            model = helper.load_yolo_model(model_path)
-    if model_type is not None:
-        model = helper.load_yolo_model(model_path)
+            model = helper.load_yolo_model(st.session_state.model_path)
+    if st.session_state.model_type is not None:
+        model = helper.load_yolo_model(st.session_state.model_path)
 else:
-        model = param_path
+    model = param_path
 
-if model_type == 'Style Transfer':
+if st.session_state.model_type == 'Style Transfer':
     st_frame = st.empty()
 
 st.sidebar.header("Image/Video Config")
