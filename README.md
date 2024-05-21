@@ -2,6 +2,10 @@
 
 ## Team Members:
 Jaskirat, Grey, Qilin (CAPPies)
+
+## Related repository:
+We initially have our repository here![here](https://github.com/jaskcodes/Reef-madness/tree/main/detection_opencv_streamlit/application). 
+
 ## 1. Classification of Visually Similar Species
 
 ![schema](Marine%20Species%20Detection%20OpenCV/schema.png)
