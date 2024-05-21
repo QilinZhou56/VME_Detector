@@ -33,6 +33,7 @@ confidence = float(st.sidebar.slider(
     "Select Detection Model Confidence", 25, 100, 40)) / 100
 
 param_path = None
+model_path = None
 # Selecting Detection Or Segmentation
 if model_type == 'Marine General':
   model_path = Path(settings.DETECTION_MODEL1)
@@ -60,7 +61,7 @@ if model_type != 'Style Transfer' and model_type != 'Zero Shot':
                 model = helper.load_vit_model(model_path)
             else:
                 model = helper.load_yolo_model(model_path)
-        else:
+        if model_path is not None:
             model = helper.load_yolo_model(model_path)
     except Exception as ex:
         st.error(f"Unable to load model. Check the specified path: {model_path}")
