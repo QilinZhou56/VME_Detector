@@ -252,33 +252,33 @@ if source_radio == settings.IMAGE:
                         if score >= confidence_threshold:
                             st.write(f"Detected {texts[label]} with confidence {round(score.item(), 3)} at location {box.tolist()}")
     
-    elif source_radio == settings.VIDEO:
-        if st.session_state.model_type == 'Healthy vs Bleached Corals':
-            size = (640, 640) if st.session_state.model_select == "YOLOv8" else (150, 150) if st.session_state.model_select != 'ViT' else (224, 224)
-            helper.play_stored_video(confidence, model, size, yolov=st.session_state.model_select=="YOLOv8", pth=st.session_state.model_select=='ViT', Classify1=True, Classify2=False, Detect=False, Generate=False)
+elif source_radio == settings.VIDEO:
+    if st.session_state.model_type == 'Healthy vs Bleached Corals':
+        size = (640, 640) if st.session_state.model_select == "YOLOv8" else (150, 150) if st.session_state.model_select != 'ViT' else (224, 224)
+        helper.play_stored_video(confidence, model, size, yolov=st.session_state.model_select=="YOLOv8", pth=st.session_state.model_select=='ViT', Classify1=True, Classify2=False, Detect=False, Generate=False)
     
-        elif st.session_state.model_type in ['FathomNet', 'Marine General']:
-            helper.play_stored_video(confidence, model, (640, 640), yolov=True, pth=False, Classify1=False, Classify2=False, Detect=True, Generate=False)
+    elif st.session_state.model_type in ['FathomNet', 'Marine General']:
+        helper.play_stored_video(confidence, model, (640, 640), yolov=True, pth=False, Classify1=False, Classify2=False, Detect=True, Generate=False)
     
-        elif st.session_state.model_type == 'CoralNet':
-            helper.play_stored_video(confidence, model, (640, 640), yolov=True, pth=False, Classify1=False, Classify2=True, Detect=False, Generate=False)
+    elif st.session_state.model_type == 'CoralNet':
+        helper.play_stored_video(confidence, model, (640, 640), yolov=True, pth=False, Classify1=False, Classify2=True, Detect=False, Generate=False)
     
-        elif st.session_state.model_type == "Style Transfer":
-            helper.play_stored_video(confidence, model, (640, 640), yolov=True, pth=False, Classify1=False, Classify2=False, Detect=False, Generate=True)
+    elif st.session_state.model_type == "Style Transfer":
+        helper.play_stored_video(confidence, model, (640, 640), yolov=True, pth=False, Classify1=False, Classify2=False, Detect=False, Generate=True)
     
-    elif source_radio == settings.YOUTUBE:
-        if st.session_state.model_type == 'Healthy vs Bleached Corals':
-            size = (640, 640) if st.session_state.model_select == "YOLOv8" else (150, 150) if st.session_state.model_select != 'ViT' else (224, 224)
-            helper.play_youtube_video(confidence, model, size, yolov=st.session_state.model_select=="YOLOv8", pth=st.session_state.model_select=='ViT', Classify1=True, Classify2=False, Detect=False, Generate=False)
+elif source_radio == settings.YOUTUBE:
+    if st.session_state.model_type == 'Healthy vs Bleached Corals':
+        size = (640, 640) if st.session_state.model_select == "YOLOv8" else (150, 150) if st.session_state.model_select != 'ViT' else (224, 224)
+        helper.play_youtube_video(confidence, model, size, yolov=st.session_state.model_select=="YOLOv8", pth=st.session_state.model_select=='ViT', Classify1=True, Classify2=False, Detect=False, Generate=False)
     
-        elif st.session_state.model_type in ['FathomNet', 'Marine General']:
-            helper.play_youtube_video(confidence, model, (640, 640), yolov=True, pth=False, Classify1=False, Classify2=False, Detect=True, Generate=False)
+    elif st.session_state.model_type in ['FathomNet', 'Marine General']:
+        helper.play_youtube_video(confidence, model, (640, 640), yolov=True, pth=False, Classify1=False, Classify2=False, Detect=True, Generate=False)
     
-        elif st.session_state.model_type == 'CoralNet':
-            helper.play_youtube_video(confidence, model, (640, 640), yolov=True, pth=False, Classify1=False, Classify2=True, Detect=False, Generate=False)
+    elif st.session_state.model_type == 'CoralNet':
+        helper.play_youtube_video(confidence, model, (640, 640), yolov=True, pth=False, Classify1=False, Classify2=True, Detect=False, Generate=False)
     
-        elif st.session_state.model_type == "Style Transfer":
-            helper.play_youtube_video(confidence, model, (640, 640), yolov=True, pth=False, Classify1=False, Classify2=False, Detect=False, Generate=True)
+    elif st.session_state.model_type == "Style Transfer":
+        helper.play_youtube_video(confidence, model, (640, 640), yolov=True, pth=False, Classify1=False, Classify2=False, Detect=False, Generate=True)
     
-    else:
-        st.error("Please select a valid source type!")
+else:
+    st.error("Please select a valid source type!")
