@@ -92,7 +92,7 @@ if source_radio == settings.IMAGE:
                          use_column_width=True)
                 video_file = open(settings.DEFAULT_VIDEO, 'rb')
                 video_bytes = video_file.read()
-                st.video(video_bytes, autoplay=True)
+                st.video(video_bytes)
                 st.caption("Beautiful Corals :rainbow:	:beach_with_umbrella: :cherry_blossom:")
             elif source_img is None and param_path is not None:
                 st.markdown("""
@@ -120,7 +120,7 @@ if source_radio == settings.IMAGE:
                      use_column_width=True)
             sad_file  = open(settings.DEFAULT_SAD_VIDEO, 'rb')
             sad_bytes = sad_file.read()
-            st.video(sad_bytes, autoplay=True)
+            st.video(sad_bytes)
             st.caption("Sad Corals :hospital: :desert: 	:man_with_probing_cane:")
         else:
           if model_type == 'FathomNet' or model_type == 'Marine General':
