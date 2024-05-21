@@ -48,7 +48,7 @@ def load_vit_model(model_path):
     model.eval()
     return model
 
-@st.cache
+@st.cache(hash_funcs={"MyUnhashableClass": lambda _: None})
 def load_owlvit_model():
     processor = OwlViTProcessor.from_pretrained("google/owlvit-base-patch32")
     model = OwlViTForObjectDetection.from_pretrained("google/owlvit-base-patch32")
