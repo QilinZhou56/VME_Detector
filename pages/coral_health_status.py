@@ -11,14 +11,6 @@ import statsmodels.api as sm
 base_dir = './Coral Health'
 full_path = os.path.abspath(base_dir)
 
-# Setting page layout
-st.set_page_config(
-    page_title="Coral Health Map",
-    page_icon="🪸",
-    layout="wide",
-    initial_sidebar_state="expanded"
-)
-
 # Sidebar for actions
 st.sidebar.title("Coral Health Image Analysis🪸")
 category = st.sidebar.selectbox("Select Image Category", ["healthy_corals", "bleached_corals", "all_categories"])
