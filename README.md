@@ -12,7 +12,7 @@ streamlit run cv_models.py
 ```
 
 ## Application Use （Public; hosted by streamlit)
-This is the associated [URL](https://vmedetector-7bsaxaqq9o7wrahnbnbqxk.streamlit.app/). **Only upload images and explore species map EDA in this case**. Due to 1GB limit in streamlit cloud, real-time classification or detection and access to local image repositories may fail in the mid of execution. Whenever it cracks, click **reboot** to reactivate.
+This is the associated [URL](https://vmedetector-7bsaxaqq9o7wrahnbnbqxk.streamlit.app/). **Only upload images and explore species map EDA in this case**. Due to 1GB limit in streamlit cloud, real-time classification or detection, zero-shot detection, and access to local image repositories may fail in the mid of execution. Whenever it cracks, click **reboot** to reactivate.
 
 
 ## 1. Classification of Visually Similar Species
