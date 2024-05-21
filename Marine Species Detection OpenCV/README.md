@@ -1,4 +1,4 @@
-# Marine Species Detection OpenCV
+# Marine Species Detection OpenCV (Initial Web Architecture Construction Attempt)
 # Referenced Resources
 1. Youtube OpenCV channel [TheCodingBug](https://www.youtube.com/hashtag/thecodingbug).
 2. MBARI Deep-Sea Guide [website link](http://dsg.mbari.org/dsg/browsetreesearch/concept/marine%20organism)
