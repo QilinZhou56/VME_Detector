@@ -23,11 +23,11 @@ This is the associated [URL](https://vmedetector-7bsaxaqq9o7wrahnbnbqxk.streamli
 ├── pages
 ├── requirements.txt
 ├── Marine Species Detection Open CV
-│   ├── index.html
-│   ├── js
-│   │   ├── **/*.js
-│   └── partials/template
-├── pages
+│   ├── videos
+│   ├── images
+│   ├── weights
+│   ├── application (demo in Google Colab, demo for detection on cpu)
+│   ├── Coral Health (dataset)
 │   ├── 
 │   │   ├── **/*.css
 │   ├── favicon.ico
