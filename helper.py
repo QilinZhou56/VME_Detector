@@ -367,11 +367,18 @@ def play_youtube_video(conf, model, target_size, yolov, pth, Classify1, Classify
               while vid_cap.isOpened():
                   success, image = vid_cap.read()
                   if success:
+                    if Detect:
                       _display_detected_frames(conf,
-                                                      model,
-                                                      st_frame,
-                                                      image,
-                                                      target_size, yolov, pth)
+                                                        model,
+                                                        st_frame, 
+                                                        image, target_size, yolov, pth
+                                                        )
+                    else:
+                      _display_classify_frames(conf,
+                                                        model,
+                                                        st_frame, 
+                                                        image, target_size, yolov, pth
+                                                        )  
                   else:
                       vid_cap.release()
                       break
@@ -414,11 +421,19 @@ def play_stored_video(conf, model, target_size, yolov, pth, Classify1, Classify2
               while (vid_cap.isOpened()):
                   success, image = vid_cap.read()
                   if success:
-                    _display_detected_frames(conf,
-                                                      model,
-                                                      st_frame, 
-                                                      image, target_size, yolov, pth
-                                                      )
+                    if Detect:
+                      _display_detected_frames(conf,
+                                                        model,
+                                                        st_frame, 
+                                                        image, target_size, yolov, pth
+                                                        )
+                    else:
+                      _display_classify_frames(conf,
+                                                        model,
+                                                        st_frame, 
+                                                        image, target_size, yolov, pth
+                                                        )                    
+                                                      
                   else:
                       vid_cap.release()
                       break
