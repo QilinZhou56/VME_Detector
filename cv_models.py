@@ -29,7 +29,7 @@ st.sidebar.header("CV Datasets")
 # Model Options
 st.write("Zero Shot could only be implemented locally, due to streamlit Cloud limit!!!")
 param_path = None
-
+model_type = None
 # Selecting Detection Or Classification
 if st.sidebar.button('Healthy vs Bleached Corals'):
   model_type = 'Healthy vs Bleached Corals'
