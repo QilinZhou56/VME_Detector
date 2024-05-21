@@ -38,7 +38,7 @@ This is the associated [URL](https://vmedetector-7bsaxaqq9o7wrahnbnbqxk.streamli
 │   └── partials/template
 └── .gitignore
 ```
-**Note** all streamlit app related py files are moved under VME_Detector directory, to be compliant with streamlit cloud required format.
+**Note:** all streamlit app related py files are moved under VME_Detector directory, to be compliant with streamlit cloud required format.
 ## 1. Classification of Visually Similar Species
 
 ![schema](Marine%20Species%20Detection%20OpenCV/schema.png)
