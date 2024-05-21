@@ -27,63 +27,57 @@ st.title("Computer Vision of Marine Species, Protect Our Environment 🐟🪸�
 st.sidebar.header("CV Datasets")
 
 # Model Options
-st.write("Zero Shot could only be implemented locally, due to streamlit Cloud limit!!!")
-param_path = None
-# Initialize session state for model type and path
-if 'model_type' not in st.session_state:
-    st.session_state.model_type = None
-if 'model_path' not in st.session_state:
-    st.session_state.model_path = None
-if 'model_select' not in st.session_state:
-    st.session_state.model_select = None
-
-# Selecting Detection Or Classification
-if st.sidebar.button('Healthy vs Bleached Corals'):
-    st.session_state.model_type = 'Healthy vs Bleached Corals'
-    st.session_state.model_select = st.sidebar.selectbox(
-        "Choose a health status classification model...", settings.HEALTH_MODEL_DICT.keys())
-    st.session_state.model_path = Path(settings.HEALTH_MODEL_DICT.get(st.session_state.model_select))
-if st.sidebar.button('Style Transfer'):
-    st.session_state.model_type = 'Style Transfer'
-    source_param = st.sidebar.selectbox(
-        "Choose a style...", settings.STYLE_DICT.keys())
-    param_path = Path(settings.STYLE_DICT.get(source_param))
-if st.sidebar.button('Marine General'):
-    st.session_state.model_type = 'Marine General'
-    st.session_state.model_path = Path(settings.DETECTION_MODEL1)
-if st.sidebar.button('FathomNet'):
-    st.session_state.model_type = 'FathomNet'
-    st.session_state.model_path = Path(settings.DETECTION_MODEL2)
-if st.sidebar.button('CoralNet'):
-    st.session_state.model_type = 'CoralNet'
-    st.session_state.model_path = Path(settings.ClASSIFICATION_MODEL1)
-
+model_type = st.sidebar.radio(
+    "Select Dataset", ['Healthy vs Bleached Corals', 'Style Transfer', 'Marine General', 'FathomNet', 'CoralNet', 'Zero Shot'])
 confidence = float(st.sidebar.slider(
     "Select Detection Model Confidence", 25, 100, 40)) / 100
 
-# Load Pre-trained ML Model
-model = None
-if st.session_state.model_type != 'Style Transfer' and st.session_state.model_type != 'Zero Shot':
-    if st.session_state.model_type == 'Healthy vs Bleached Corals':
-        if st.session_state.model_select != 'ViT' and st.session_state.model_select != 'YOLOv8':
-            model = helper.load_custom_or_pretrained_model(st.session_state.model_path)
-        elif st.session_state.model_select == 'ViT':
-            model = helper.load_vit_model(st.session_state.model_path)
-        else:
-            model = helper.load_yolo_model(st.session_state.model_path)
-    if st.session_state.model_type is not None:
-        model = helper.load_yolo_model(st.session_state.model_path)
-else:
-    model = param_path
+param_path = None
+# Selecting Detection Or Segmentation
+if model_type == 'Marine General':
+  model_path = Path(settings.DETECTION_MODEL1)
+elif model_type == 'FathomNet':
+  model_path = Path(settings.DETECTION_MODEL2)
+elif model_type == 'CoralNet':
+  model_path = Path(settings.ClASSIFICATION_MODEL1)
+elif model_type == 'Healthy vs Bleached Corals':
+  model_select = st.sidebar.selectbox(
+        "Choose a health status classification model...", settings.HEALTH_MODEL_DICT.keys())
+  model_path = Path(settings.HEALTH_MODEL_DICT.get(model_select))
+elif model_type == 'Style Transfer':
+  source_param = st.sidebar.selectbox(
+        "Choose a style...", settings.STYLE_DICT.keys())
+  param_path = Path(settings.STYLE_DICT.get(source_param))
 
-if st.session_state.model_type == 'Style Transfer':
+
+# Load Pre-trained ML Model
+if model_type != 'Style Transfer' and model_type != 'Zero Shot':
+    try:
+        if model_type == 'Healthy vs Bleached Corals':
+            if model_select != 'ViT' and model_select != 'YOLOv8':
+                model = helper.load_custom_or_pretrained_model(model_path)
+            elif model_select == 'ViT':
+                model = helper.load_vit_model(model_path)
+            else:
+                model = helper.load_yolo_model(model_path)
+        else:
+            model = helper.load_yolo_model(model_path)
+    except Exception as ex:
+        st.error(f"Unable to load model. Check the specified path: {model_path}")
+        st.error(ex)
+else:
+        model = param_path
+
+if model_type == 'Style Transfer':
     st_frame = st.empty()
 
 st.sidebar.header("Image/Video Config")
 source_radio = st.sidebar.radio(
     "Select Source", settings.SOURCES_LIST)
 source_img = None
-st.write("Only choose upload image for implementation in cloud, due to streamlit Cloud limit!!!")
+
+HEALTH_DIR = '/content/drive/Shareddrives/Computer Vision Project/Dataset/Coral Health'
+
 # If image is selected
 if source_radio == settings.IMAGE:
     source_img = st.sidebar.file_uploader(
@@ -100,7 +94,7 @@ if source_radio == settings.IMAGE:
                          use_column_width=True)
                 video_file = open(settings.DEFAULT_VIDEO, 'rb')
                 video_bytes = video_file.read()
-                st.video(video_bytes)
+                st.video(video_bytes, autoplay=True)
                 st.caption("Beautiful Corals :rainbow:	:beach_with_umbrella: :cherry_blossom:")
             elif source_img is None and param_path is not None:
                 st.markdown("""
@@ -122,163 +116,174 @@ if source_radio == settings.IMAGE:
     with col2:
         if source_img is None and param_path is None:
             default_detected_image_path = str(settings.DEFAULT_DETECT_IMAGE)
-            default_detected_image = PIL.Image.open(default_detected_image_path)
-            st.image(default_detected_image_path, caption='Detected Image', use_column_width=True)
+            default_detected_image = PIL.Image.open(
+                default_detected_image_path)
+            st.image(default_detected_image_path, caption='Detected Image',
+                     use_column_width=True)
             sad_file  = open(settings.DEFAULT_SAD_VIDEO, 'rb')
             sad_bytes = sad_file.read()
-            st.video(sad_bytes)
+            st.video(sad_bytes, autoplay=True)
             st.caption("Sad Corals :hospital: :desert: 	:man_with_probing_cane:")
         else:
-            if st.session_state.model_type in ['FathomNet', 'Marine General']:
-                if st.sidebar.button('Detect Species'):
-                    res = model.predict(uploaded_image, conf=confidence)
-                    if res:
-                        boxes = res[0].boxes
-                        res_plotted = res[0].plot()[:, :, ::-1]
-                        st.image(res_plotted, caption='Detected Image', use_column_width=True)
-                    else:
-                        st.write("No classes detected with high enough confidence.")
-                    try:
-                        with st.expander("Detection Results"):
-                            for box in boxes:
-                                st.write(box.data)
-                    except Exception as ex:
-                        st.write("No image is uploaded yet!")
-    
-            if st.session_state.model_type == "CoralNet":
-                if st.sidebar.button('Classify Coral Ecosystem Species'):
-                    res = model.predict(uploaded_image, conf=confidence)
+          if model_type == 'FathomNet' or model_type == 'Marine General':
+            if st.sidebar.button('Detect Species'):
+                res = model.predict(uploaded_image,
+                                    conf=confidence
+                                    )
+                if res:
+                    boxes = res[0].boxes
+                    res_plotted = res[0].plot()[:, :, ::-1]
+                    st.image(res_plotted, caption='Detected Image',
+                            use_column_width=True)
+                else:
+                    st.write("No classes detected with high enough confidence.")
+                try:
+                    with st.expander("Detection Results"):
+                        for box in boxes:
+                            st.write(box.data)
+                except Exception as ex:
+                    #st.write(ex)
+                    st.write("No image is uploaded yet!")
+
+          if model_type == "CoralNet":
+            if st.sidebar.button('Classify Coral Ecosystem Species'):
+                res = model.predict(uploaded_image,
+                                                  conf=confidence
+                                                  )
+                st.write("Classification Results:")
+                if res:
+                    for r in res:
+                        for c in range(5): 
+                            class_id = r.probs.top5[c]
+                            confidence = r.probs.top5conf.numpy()[c]
+                            class_name = r.names[class_id]
+                            st.write(f"Class ID: {class_id}, Name: {class_name}, Confidence: {confidence:.2f}")
+
+          if model_type == "Healthy vs Bleached Corals":
+            if st.sidebar.button('Classify Coral Health Status'):
+                if model_select == 'YOLOv8':
+                    res = model.predict(uploaded_image,
+                                    conf=confidence
+                                    )
                     st.write("Classification Results:")
                     if res:
                         for r in res:
-                            for c in range(5):
+                            for c in range(2): 
                                 class_id = r.probs.top5[c]
-                                confidence = r.probs.top5conf.numpy()[c]
+                                confidence = r.probs.top5conf.cpu().numpy()[c]
                                 class_name = r.names[class_id]
                                 st.write(f"Class ID: {class_id}, Name: {class_name}, Confidence: {confidence:.2f}")
-    
-            if st.session_state.model_type == "Healthy vs Bleached Corals":
-                if st.sidebar.button('Classify Coral Health Status'):
-                    if st.session_state.model_select == 'YOLOv8':
-                        res = model.predict(uploaded_image, conf=confidence)
-                        st.write("Classification Results:")
-                        if res:
-                            for r in res:
-                                for c in range(2):
-                                    class_id = r.probs.top5[c]
-                                    confidence = r.probs.top5conf.cpu().numpy()[c]
-                                    class_name = r.names[class_id]
-                                    st.write(f"Class ID: {class_id}, Name: {class_name}, Confidence: {confidence:.2f}")
-                        else:
-                            st.write("No classes detected with high enough confidence.")
-                    elif st.session_state.model_select != 'ViT':
-                        # Convert the uploaded file to a NumPy array
-                        uploaded_image_np = np.array(uploaded_image)
-    
-                        # Assuming custom model uses a different preprocessing
-                        processed_image = helper.preprocess_image(uploaded_image_np, target_size=(150, 150))
-                        predictions = model.predict(processed_image)
-                        # Determine class based on threshold (usually 0.5 for binary classifiers)
-                        threshold = 0.5
-                        probability = predictions[0][0]
-                        if probability > threshold:
-                            coral_status = "Bleached"
-                            confidence = probability
-                        else:
-                            coral_status = "Healthy"
-                            confidence = 1 - probability
-    
-                        # Displaying the results in Streamlit
-                        st.write(f"Prediction: The coral is {coral_status}.")
-                        st.write(f"Confidence: {confidence:.2%}")
                     else:
-                        uploaded_image_np = np.array(uploaded_image)
-                        # Preprocess the image for the PyTorch model
-                        processed_image = helper.preprocess_image_pytorch(uploaded_image_np, (224, 224))
-                        device = next(model.parameters()).device
-                        processed_image = processed_image.to(device)
-    
-                        # Make a prediction
-                        with torch.no_grad():
-                            output = model(processed_image)
-                            logits = output.logits  # Access the logits from the output
-                            probabilities = torch.nn.functional.softmax(logits, dim=1)
-                            probability = probabilities[0][1].item()  # Assuming class '1' is 'Bleached'
-    
-                        # Determine coral status based on probability
-                        threshold = 0.5
-                        coral_status = "Bleached" if probability > threshold else "Healthy"
-                        confidence = probability if coral_status == "Bleached" else 1 - probability
-    
-                        # Displaying the results in Streamlit
-                        st.write(f"Prediction: The coral is {coral_status}.")
-                        st.write(f"Confidence: {confidence:.2%}")
-    
-            if st.session_state.model_type == "Style Transfer":
-                if st.sidebar.button('Generate Images'):
-                    # Display generated images using GAN
-                    st_frame = st.empty()
-                    if uploaded_image is not None:
-                        helper._display_generated_frames(param_path, uploaded_image, st_frame, upload=True, video=False)
+                        st.write("No classes detected with high enough confidence.")
+                elif model_select != 'ViT':
+                    # Convert the uploaded file to a NumPy array
+                    uploaded_image_np = np.array(uploaded_image)
+
+                    # Assuming custom model uses a different preprocessing
+                    processed_image = helper.preprocess_image(uploaded_image_np, target_size=(150, 150)) 
+                    predictions = model.predict(processed_image)
+                    # Determine class based on threshold (usually 0.5 for binary classifiers)
+                    threshold = 0.5
+                    probability = predictions[0][0]
+                    if probability > threshold:
+                        coral_status = "Bleached"
+                        confidence = probability
                     else:
-                        st.write("Please upload an image first to generate.")
-    
-            if st.session_state.model_type == "Zero Shot":
-                st.write("Only support JPEG image for now")
-                # Load model and processor
-                processor, model = helper.load_owlvit_model()
-    
-                # Text input for user to enter descriptions
-                descriptions = st.sidebar.text_input("Enter descriptions for detection, separated by commas",
-                                                     "a photo of a fish, a photo of a coral")
-                texts = [desc.strip() for desc in descriptions.split(',')]
-    
-                # Assuming 'uploaded_image' is defined and loaded elsewhere in the application
-                results = helper.detect_with_owlvit(processor, model, uploaded_image, texts)
-                draw = ImageDraw.Draw(uploaded_image)
-                confidence_threshold = st.sidebar.slider('Confidence Threshold for Zero Shot', 0.0, 1.0, 0.5, key='conf_threshold_owlvit')
+                        coral_status = "Healthy"
+                        confidence = 1 - probability
+
+                    # Displaying the results in Streamlit
+                    st.write(f"Prediction: The coral is {coral_status}.")
+                    st.write(f"Confidence: {confidence:.2%}")
+                else:
+                    uploaded_image_np = np.array(uploaded_image)
+                    # Preprocess the image for the PyTorch model
+                    processed_image = helper.preprocess_image_pytorch(uploaded_image_np, (224, 224))
+                    device = next(model.parameters()).device
+                    processed_image = processed_image.to(device)
+
+                    # Make a prediction
+                    with torch.no_grad():
+                        output = model(processed_image)
+                        logits = output.logits  # Access the logits from the output
+                        probabilities = torch.nn.functional.softmax(logits, dim=1)
+                        probability = probabilities[0][1].item()  # Assuming class '1' is 'Bleached'
+
+                    # Determine coral status based on probability
+                    threshold = 0.5
+                    coral_status = "Bleached" if probability > threshold else "Healthy"
+                    confidence = probability if coral_status == "Bleached" else 1 - probability
+
+                    # Displaying the results in Streamlit
+                    st.write(f"Prediction: The coral is {coral_status}.")
+                    st.write(f"Confidence: {confidence:.2%}")
+
+          if model_type == "Style Transfer":
+            if st.sidebar.button('Generate Images'):
+                # Display generated images using GAN
+                st_frame = st.empty()
+                if uploaded_image is not None:
+                   helper._display_generated_frames(param_path, uploaded_image, st_frame, upload=True, video=False)
+                else:
+                    st.write("Please upload an image first to generate.")
+
+          if model_type == "Zero Shot":
+              st.write("Only support JPEG image for now")
+              # Load model and processor
+              processor, model = helper.load_owlvit_model()
+
+              # Text input for user to enter descriptions
+              descriptions = st.sidebar.text_input("Enter descriptions for detection, separated by commas",
+                                                      "a photo of a fish, a photo of a coral")
+              texts = [desc.strip() for desc in descriptions.split(',')]
+
+              # Assuming 'uploaded_image' is defined and loaded elsewhere in the application
+              results = helper.detect_with_owlvit(processor, model, uploaded_image, texts)
+              draw = ImageDraw.Draw(uploaded_image)
+              confidence_threshold = st.sidebar.slider('Confidence Threshold for Zero Shot', 0.0, 1.0, 0.5, key='conf_threshold_owlvit')
+              for box, score, label in zip(results["boxes"], results["scores"], results["labels"]):
+                if score >= confidence_threshold:
+                  box = [round(b, 2) for b in box.tolist()]
+                  draw.rectangle(box, outline="red", width=3)
+                  label_text = f"{texts[label]}: {round(score.item(), 3)}"
+                  draw.text((box[0], box[1] - 10), label_text, fill="orange", font_size=15)
+
+              st.image(uploaded_image, caption='Detected Image', use_column_width=True)
+
+              # Display detailed results in an expander
+              with st.expander("Detailed Detection Results"):
                 for box, score, label in zip(results["boxes"], results["scores"], results["labels"]):
-                    if score >= confidence_threshold:
-                        box = [round(b, 2) for b in box.tolist()]
-                        draw.rectangle(box, outline="red", width=3)
-                        label_text = f"{texts[label]}: {round(score.item(), 3)}"
-                        draw.text((box[0], box[1] - 10), label_text, fill="orange", font_size=15)
-    
-                st.image(uploaded_image, caption='Detected Image', use_column_width=True)
-    
-                # Display detailed results in an expander
-                with st.expander("Detailed Detection Results"):
-                    for box, score, label in zip(results["boxes"], results["scores"], results["labels"]):
-                        if score >= confidence_threshold:
-                            st.write(f"Detected {texts[label]} with confidence {round(score.item(), 3)} at location {box.tolist()}")
-    
+                  if score >= confidence_threshold:
+                    st.write(f"Detected {texts[label]} with confidence {round(score.item(), 3)} at location {box.tolist()}")
+
 elif source_radio == settings.VIDEO:
-    if st.session_state.model_type == 'Healthy vs Bleached Corals':
-        size = (640, 640) if st.session_state.model_select == "YOLOv8" else (150, 150) if st.session_state.model_select != 'ViT' else (224, 224)
-        helper.play_stored_video(confidence, model, size, yolov=st.session_state.model_select=="YOLOv8", pth=st.session_state.model_select=='ViT', Classify1=True, Classify2=False, Detect=False, Generate=False)
-    
-    elif st.session_state.model_type in ['FathomNet', 'Marine General']:
-        helper.play_stored_video(confidence, model, (640, 640), yolov=True, pth=False, Classify1=False, Classify2=False, Detect=True, Generate=False)
-    
-    elif st.session_state.model_type == 'CoralNet':
-        helper.play_stored_video(confidence, model, (640, 640), yolov=True, pth=False, Classify1=False, Classify2=True, Detect=False, Generate=False)
-    
-    elif st.session_state.model_type == "Style Transfer":
-        helper.play_stored_video(confidence, model, (640, 640), yolov=True, pth=False, Classify1=False, Classify2=False, Detect=False, Generate=True)
-    
+    if model_type == 'Healthy vs Bleached Corals':
+          size = (640, 640) if model_select == "YOLOv8" else (150, 150) if model_select != 'ViT' else (224, 224)
+          helper.play_stored_video(confidence, model, size, yolov=model_select=="YOLOv8", pth=model_select=='ViT', Classify1=True, Classify2=False, Detect=False, Generate=False)
+
+    elif model_type in ['FathomNet', 'Marine General']:
+          helper.play_stored_video(confidence, model, (640, 640), yolov=True, pth=False, Classify1=False, Classify2=False, Detect=True, Generate=False)
+
+    elif model_type == 'CoralNet':
+          helper.play_stored_video(confidence, model, (640, 640), yolov=True, pth=False, Classify1=False, Classify2=True, Detect=False, Generate=False)
+
+    elif model_type == "Style Transfer":
+          helper.play_stored_video(confidence, model, (640, 640), yolov=True, pth=False, Classify1=False, Classify2=False, Detect=False, Generate=True)
+
 elif source_radio == settings.YOUTUBE:
-    if st.session_state.model_type == 'Healthy vs Bleached Corals':
-        size = (640, 640) if st.session_state.model_select == "YOLOv8" else (150, 150) if st.session_state.model_select != 'ViT' else (224, 224)
-        helper.play_youtube_video(confidence, model, size, yolov=st.session_state.model_select=="YOLOv8", pth=st.session_state.model_select=='ViT', Classify1=True, Classify2=False, Detect=False, Generate=False)
-    
-    elif st.session_state.model_type in ['FathomNet', 'Marine General']:
-        helper.play_youtube_video(confidence, model, (640, 640), yolov=True, pth=False, Classify1=False, Classify2=False, Detect=True, Generate=False)
-    
-    elif st.session_state.model_type == 'CoralNet':
-        helper.play_youtube_video(confidence, model, (640, 640), yolov=True, pth=False, Classify1=False, Classify2=True, Detect=False, Generate=False)
-    
-    elif st.session_state.model_type == "Style Transfer":
-        helper.play_youtube_video(confidence, model, (640, 640), yolov=True, pth=False, Classify1=False, Classify2=False, Detect=False, Generate=True)
-    
+    button_context = "youtube"
+    if model_type == 'Healthy vs Bleached Corals':
+          size = (640, 640) if model_select == "YOLOv8" else (150, 150) if model_select != 'ViT' else (224, 224)
+          helper.play_youtube_video(confidence, model, size, yolov=model_select=="YOLOv8", pth=model_select=='ViT', Classify1=True, Classify2=False, Detect=False, Generate=False)
+
+    elif model_type in ['FathomNet', 'Marine General']:
+          helper.play_youtube_video(confidence, model, (640, 640), yolov=True, pth=False, Classify1=False, Classify2=False, Detect=True, Generate=False)
+
+    elif model_type == 'CoralNet':
+          helper.play_youtube_video(confidence, model, (640, 640), yolov=True, pth=False, Classify1=False, Classify2=True, Detect=False, Generate=False)
+
+    elif model_type == "Style Transfer":
+          helper.play_youtube_video(confidence, model, (640, 640), yolov=True, pth=False, Classify1=False, Classify2=False, Detect=False, Generate=True)
+
 else:
     st.error("Please select a valid source type!")
