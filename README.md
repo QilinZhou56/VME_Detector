@@ -1,5 +1,7 @@
 # Project Proposal
 
+## Team Members:
+Jaskirat, Grey, Qilin
 ## 1. Classification of Visually Similar Species
 
 ![schema](Marine%20Species%20Detection%20OpenCV/schema.png)
