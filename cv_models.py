@@ -20,9 +20,6 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Load the selected page
-pages[page].run()
-
 # Main page heading
 st.title("Computer Vision of Marine Species, Protect Our Environment 🐟🪸🪼🦀️🌊⭐")
 
