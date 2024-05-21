@@ -28,7 +28,7 @@ st.sidebar.header("CV Datasets")
 
 # Model Options
 model_type = st.sidebar.radio(
-    "Select Dataset", ['Healthy vs Bleached Corals', 'Style Transfer', 'Marine General', 'FathomNet', 'CoralNet', 'Zero Shot'])
+    "Select Dataset", ['Select...', 'Healthy vs Bleached Corals', 'Style Transfer', 'Marine General', 'FathomNet', 'CoralNet', 'Zero Shot'])
 confidence = float(st.sidebar.slider(
     "Select Detection Model Confidence", 25, 100, 40)) / 100
 
