@@ -76,6 +76,7 @@ Climate change poses significant threats to our marine ecosystems, particularly 
 
 - **Qilin**:
   - Customized and deployed the GAN model.
+  - OWL-ViT and Yolov8 Detection Model Exploration.
   - Built the web application for the project.
 
 - **Collaborative Efforts**:
