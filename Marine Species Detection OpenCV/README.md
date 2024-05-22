@@ -3,7 +3,7 @@
 1. Youtube OpenCV channel [TheCodingBug](https://www.youtube.com/hashtag/thecodingbug).
 2. MBARI Deep-Sea Guide [website link](http://dsg.mbari.org/dsg/browsetreesearch/concept/marine%20organism)
 3. Yolov-8 streamlit App Guide [GitHub link](https://github.com/CodingMantras/yolov8-streamlit-detection-tracking/tree/master)
-
+4. Cartoon GAN. Thanks to [penny4860](https://github.com/penny4860/Keras-CartoonGan/blob/master/README.md)
 
 # Real-Time Web Application with customized models and pretrained models
 ![Coral Health Classification Example with ViT](https://github.com/QilinZhou56/VME_Detector/blob/main/Marine%20Species%20Detection%20OpenCV/health_class.png)
