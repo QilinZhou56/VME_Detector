@@ -1,6 +1,6 @@
 # Marine Species Detection OpenCV (Initial Web Architecture Construction Attempt)
 # Referenced Resources
-1. Youtube OpenCV channel [TheCodingBug](https://www.youtube.com/hashtag/thecodingbug).
+1. Youtube OpenCV channel [TheCodingBug](https://www.youtube.com/hashtag/thecodingbug)
 2. MBARI Deep-Sea Guide [website link](http://dsg.mbari.org/dsg/browsetreesearch/concept/marine%20organism)
 3. Yolov-8 streamlit App Guide [GitHub link](https://github.com/CodingMantras/yolov8-streamlit-detection-tracking/tree/master)
 4. Cartoon GAN. Thanks to [penny4860](https://github.com/penny4860/Keras-CartoonGan/blob/master/README.md)
