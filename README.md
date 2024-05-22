@@ -16,7 +16,7 @@ streamlit run cv_models.py
 ```
 **Note:** Users with Shared Google Drive Access would be advised to use google drive to access our app first, as it is the fastest approach with no bugs. No Download needed!!!
 ## Application Use （Public; hosted by streamlit)
-This is the associated [URL](https://vmedetector-7bsaxaqq9o7wrahnbnbqxk.streamlit.app/). **Only upload images and explore EDA in this case**. Due to 1GB limit in streamlit cloud, real-time classification or detection, zero-shot detection, and access to local image repositories may fail in the mid of execution. Whenever it cracks, click **reboot** to reactivate the app in **manage my app**, for developers. For any further question, please email at [qilinzhou888@gmail.com](mailto:qilinzhou888@gmail.com).
+This is the associated [URL](https://vmedetector-7bsaxaqq9o7wrahnbnbqxk.streamlit.app/). ***Thanks to Streamlit and Snowflake, you could now run directly on this URL!!!***. For any further emerging problems, please email at [qilinzhou888@gmail.com](mailto:qilinzhou888@gmail.com). Also, we are working on to move the large files in GitHub to other storage systems. We currently push here just for temporary demonstration.
 
 ## Project Overview
 ![schema](Marine%20Species%20Detection%20OpenCV/schema.png)
