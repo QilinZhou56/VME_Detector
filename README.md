@@ -29,14 +29,6 @@ This is the associated [URL](https://vmedetector-7bsaxaqq9o7wrahnbnbqxk.streamli
 │   ├── weights
 │   ├── application (demo in Google Colab, demo for detection on cpu)
 │   ├── Coral Health (dataset)
-│   ├── 
-│   │   ├── **/*.css
-│   ├── favicon.ico
-│   ├── images
-│   ├── index.html
-│   ├── js
-│   │   ├── **/*.js
-│   └── partials/template
 └── .gitignore
 ```
 **Note:** all streamlit app related py files are moved under VME_Detector directory, to be compliant with streamlit cloud required format.
