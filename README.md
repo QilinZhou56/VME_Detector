@@ -14,7 +14,73 @@ streamlit run cv_models.py
 ## Application Use （Public; hosted by streamlit)
 This is the associated [URL](https://vmedetector-7bsaxaqq9o7wrahnbnbqxk.streamlit.app/). **Only upload images and explore EDA in this case**. Due to 1GB limit in streamlit cloud, real-time classification or detection, zero-shot detection, and access to local image repositories may fail in the mid of execution. Whenever it cracks, click **reboot** to reactivate the app in **manage my app**, for developers. For any further question, please email at [qilinzhou888@gmail.com](mailto:qilinzhou888@gmail.com).
 
+## Project Overview
+![schema](Marine%20Species%20Detection%20OpenCV/schema.png)
+Climate change poses significant threats to our marine ecosystems, particularly to coral reefs, many of which are experiencing bleaching. This project aims to address this issue using deep learning techniques, divided into two parts: 
 
+1. **Classification of Coral Health Status**
+2. **Generative Models to Visualize Potential Unhealthy States of Currently Healthy Corals**
+
+## Part 1: Classification of Coral Health Status
+
+- **Objective**: Identify healthy and unhealthy corals and classify coral species.
+- **Models Used**: 
+  - Custom
+  - YOLO8
+  - EfficientNet
+  - Vision Transformer
+
+- **Performance**: 
+  - The Vision Transformer model achieved the best performance.
+  - Loss: 0.32
+  - Test Accuracy: 85.87%
+  - Dataset: 923 images
+
+- **Species Classification**:
+  - Applied YOLO8 with the Coral Net dataset.
+  - Enabled the user interface to display species types on the web application.
+
+## Part 2: Generative Models
+
+- **Objective**: Visualize how unhealthy coral reefs would look if they were healthy and vice versa.
+- **Models Developed**: Custom GANs
+- **Pre-trained Cartoon GANs**:
+  - Inspired by directors like Hayao Miyazaki, Mamoru Hosoda, Satoshi Kon, and Makoto Shinkai.
+  - Transformed images into specific artistic styles.
+  - Offered a unique way to explore ocean species in digital media.
+
+## Additional Analysis on Detection Model
+
+- **Dataset**: FathomNet (includes labeled bounding boxes).
+- **Species**: Focused on seven species due to limited computational resources and time.
+- **Challenges**: Custom model faced challenges in achieving high accuracy.
+- **Solution**: Applied YOLO8 directly to demonstrate object detection on the web app.
+
+## Interactive Streamlit App
+
+- **Features**:
+  - Users can upload images, and videos, or choose from YouTube.
+  - Perform classification, apply GAN transformations, or detect species bounding boxes.
+  - Utilizes different models on various datasets.
+
+## Team Contributions
+
+- **Grey**:
+  - Focused on EDA and model selection for the healthy coral datasets.
+  - Compared models and managed the ML flow pipeline for classification.
+
+- **Jaskirat**:
+  - Worked on EDA and detection problems with the FathomNet dataset.
+  - Fine-tuned the Vision Transformer.
+  - Generated evaluation metrics.
+
+- **Qilin**:
+  - Customized and deployed the GAN model.
+  - Built the web application for the project.
+
+- **Collaborative Efforts**:
+  - Worked together on the slides and the report.
+  - 
 ## Directory 
 ```plaintext
 ├── GAN
@@ -32,50 +98,5 @@ This is the associated [URL](https://vmedetector-7bsaxaqq9o7wrahnbnbqxk.streamli
 └── .gitignore
 ```
 **Note:** all streamlit app related py files are moved under VME_Detector directory, to be compliant with streamlit cloud required format.
-## 1. Classification of Visually Similar Species
-
-![schema](Marine%20Species%20Detection%20OpenCV/schema.png)
-
-### Overview
-This part of the project focuses on distinguishing between species that are visually similar using advanced computer vision techniques.
-
-### Species Selection
-- **Abyssopathes lyra** - A black coral similar to others in its genus. (2 images)
-- **Abyssopathes** - Includes various species within the genus. (30 images)
-- **Abyssopathes sp.** - Another member of the Abyssopathes genus. (13 images)
-- **Anthomastus sp.** - Visually similar to other Anthomastus corals. (79 images)
-- **Anthomastus tahinodus** - Similar to Anthomastus sp.
-- **Paragorgia arborea (Bubblegum Coral)** - Often similar to other Paragorgia species.
-- **Paragorgia sp.** - Similar to Paragorgia arborea.
-- **Corallium sp.** - Deep-sea corals often similar across the genus.
-
-### Data Collection
-Images will be gathered from databases like FishBase or directly requested from marine research institutions.
-
-### Model Development
-We plan to utilize a CNN architecture, possibly starting with pretrained models such as ResNet or VGG, which will be fine-tuned on our fathom image dataset.
-
-### Evaluation
-The model's performance will be assessed using metrics like accuracy, precision, recall, and F1-score.
-
-## 2. Identification of Endangered Species
-
-### Overview
-Focusing on endangered species, this project aims to detect and count individuals within images or video footage, aiding in conservation efforts.
-
-### Species Selection
-- **Antipatharia** - Vulnerable due to habitat needs and ocean acidification.
-- **Bathypathes patula** - At risk from deep-sea fishing.
-- **Corallium** - Harvested for jewelry, placing some species at risk.
-- **Paragorgia arborea** - At risk from deep-sea trawling.
-- **Primnoa** - Sensitive to temperature changes and disturbances.
-- **Sebastes aleutianus-melanostictus complex** - Overfished and vulnerable.
-- **Holothuria scabra** - Facing global overfishing pressures.
-- **Pristipomoides filamentosus** - Vulnerable due to fishing pressures.
-- **Lophiiformes (Monkfish)** - Threatened by commercial fishing.
-- **Hippoglossus hippoglossus (Atlantic Halibut)** - Overfished and habitat disrupted.
-
-### Data Collection
-Sufficient images for each selected species will be gathered from the fathom dataset or deepfish.ai, including various contexts and environments.
 
 
