@@ -61,7 +61,7 @@ if model_type != 'Style Transfer' and model_type != 'Zero Shot':
                 model = helper.load_vit_model(model_path)
             else:
                 model = helper.load_yolo_model(model_path)
-        if model_path is not None:
+        elif model_path is not None:
             model = helper.load_yolo_model(model_path)
     except Exception as ex:
         st.error(f"Unable to load model. Check the specified path: {model_path}")
