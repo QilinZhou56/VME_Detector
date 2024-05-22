@@ -85,7 +85,7 @@ Climate change poses significant threats to our marine ecosystems, particularly 
 
 - **Collaborative Efforts**:
   - Worked together on the slides and the report.
-  - 
+    
 ## Directory 
 ```plaintext
 ├── GAN
