@@ -6,7 +6,7 @@ Jaskirat, Grey, Qilin (CAPPies)
 ## Related Repository, Report and Presentation
 Our primary repository is [here](https://github.com/jaskcodes/Reef-madness/tree/main/detection_opencv_streamlit/application). We use **this only to connect with streamlit** with trained weights files and image repositories. 
 
-You can find the project report [here](https://github.com/QilinZhou56/VME_Detector/blob/main/project_report.pdf) and the final presentation [here].(https://github.com/QilinZhou56/VME_Detector/blob/main/presentation.pdf)
+You can find the project report [here](https://github.com/QilinZhou56/VME_Detector/blob/main/project_report.pdf) and the final presentation [here](https://github.com/QilinZhou56/VME_Detector/blob/main/presentation.pdf).
 
 ## 
 
