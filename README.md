@@ -3,8 +3,12 @@
 ## Team Members:
 Jaskirat, Grey, Qilin (CAPPies)
 
-## Related repository:
+## Report, Related Repository and Presentation
 Our primary repository is [here](https://github.com/jaskcodes/Reef-madness/tree/main/detection_opencv_streamlit/application). We use **this only to connect with streamlit** with trained weights files and image repositories. 
+
+You can find the project report [here](https://github.com/QilinZhou56/VME_Detector/blob/main/project_report.pdf) and the final presentation [here](https://github.com/QilinZhou56/VME_Detector/blob/main/presentation.pdf)
+
+## 
 
 ## Application Use （Local; preferred one as all tasks worked well)
 ```bash
@@ -72,7 +76,7 @@ Climate change poses significant threats to our marine ecosystems, particularly 
 - **Jaskirat**:
   - Worked on EDA and detection problems with the FathomNet dataset.
   - Fine-tuned the Vision Transformer.
-  - Generated evaluation metrics.
+  - Generated evaluation metrics and tracked experiments on MLFlow and Databricks.
 
 - **Qilin**:
   - Customized and deployed the GAN model.
