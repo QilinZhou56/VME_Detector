@@ -1,4 +1,4 @@
-# Reef Madness Project Proposal
+# Reef Madness Project
 ![Enjoy our Reef Madness](https://github.com/QilinZhou56/VME_Detector/blob/main/ReefMadness.png)
 ## Team Members:
 Jaskirat, Grey, Qilin (CAPPies)
