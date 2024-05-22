@@ -43,7 +43,7 @@ Climate change poses significant threats to our marine ecosystems, particularly 
 ## Part 2: Generative Models
 
 - **Objective**: Visualize how unhealthy coral reefs would look if they were healthy and vice versa.
-- **Models Developed**: Custom GANs
+- **Models Developed**: Custom CycleGANs
 - **Pre-trained Cartoon GANs**:
   - Inspired by directors like Hayao Miyazaki, Mamoru Hosoda, Satoshi Kon, and Makoto Shinkai.
   - Transformed images into specific artistic styles.
