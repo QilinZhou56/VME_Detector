@@ -10,7 +10,7 @@ Our primary repository is [here](https://github.com/jaskcodes/Reef-madness/tree/
 ```bash
 streamlit run cv_models.py
 ```
-
+**Note:** Users with Shared Google Drive Access would be advised to use google drive first, as it is the fastest approach with no bugs. No Download needed!!!
 ## Application Use （Public; hosted by streamlit)
 This is the associated [URL](https://vmedetector-7bsaxaqq9o7wrahnbnbqxk.streamlit.app/). **Only upload images and explore EDA in this case**. Due to 1GB limit in streamlit cloud, real-time classification or detection, zero-shot detection, and access to local image repositories may fail in the mid of execution. Whenever it cracks, click **reboot** to reactivate the app in **manage my app**, for developers. For any further question, please email at [qilinzhou888@gmail.com](mailto:qilinzhou888@gmail.com).
 
