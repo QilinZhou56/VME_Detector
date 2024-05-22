@@ -6,22 +6,14 @@
 
 
 # Real-Time Web Application with customized models and pretrained models
-![Web Page](https://github.com/QilinZhou56/VME_Detector/blob/main/Marine%20Species%20Detection%20OpenCV/Webpage.png)
-![Web Page2](https://github.com/QilinZhou56/VME_Detector/blob/main/Marine%20Species%20Detection%20OpenCV/Webpage2.png)
-# SSD 
+![Coral Health Classification Example with ViT](https://github.com/QilinZhou56/VME_Detector/blob/main/Marine%20Species%20Detection%20OpenCV/health_class.png)
+![Bleached Coral Recovery Example with CycleGAN](https://github.com/QilinZhou56/VME_Detector/blob/main/Marine%20Species%20Detection%20OpenCV/recovered.png)
+![Species Map](https://github.com/QilinZhou56/VME_Detector/blob/main/Marine%20Species%20Detection%20OpenCV/species.png)
+![Coral Health EDA](https://github.com/QilinZhou56/VME_Detector/blob/main/Marine%20Species%20Detection%20OpenCV/pixel.png)
+# Detection Example
+## SSD 
 SSD (Single Shot MultiBox Detector): This is the architecture used for the model. SSD is designed for object detection, which means it predicts both bounding boxes and class labels for each detected object in an image. It does this in a single forward pass of the network, making it efficient and fast.
-# Models
-1. Mobilenet
-2. YOLOv8 
-# Current Step:
-1. Build a file of deep sea class names
-2. Modify and train based on YOLOv8 and other CV models
-3. We are working on tailoring the model specific to vulnerable corals, I am just creating this interface for different models' application on videos.
-# Videos 
-Deep Fish Datasets
-
-
-## Training (YOLOv8)
+## Model Training (YOLOv8)
 1. Underwater Object Detection Dataset [Kaggle Link](https://www.kaggle.com/datasets/akshatsng/underwater-dataset-for-8-classes-with-label?select=valid)
    - Seven Classes: Fish, Crab, Human, Trash, Jellyfish, Coral Reef, Fish Group
    - Dataset Split: Train Set: 70%; Validation Set: 10%; Test Set: 20% (640x640)
