@@ -3,7 +3,7 @@ import streamlit as st
 import torch
 import torchvision.transforms as transforms
 from torchvision.transforms import Compose, Resize, ToTensor, Normalize
-from transformers import AutoImageProcessor, ViTForImageClassification
+#from transformers import AutoImageProcessor, ViTForImageClassification
 from transformers import OwlViTProcessor, OwlViTForObjectDetection
 import cv2
 from pytube import YouTube
