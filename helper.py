@@ -4,7 +4,7 @@ import torch
 import torchvision.transforms as transforms
 from torchvision.transforms import Compose, Resize, ToTensor, Normalize
 #from transformers import AutoImageProcessor, ViTForImageClassification
-from transformers import OwlViTProcessor, OwlViTForObjectDetection
+#from transformers import OwlViTProcessor, OwlViTForObjectDetection
 import cv2
 from pytube import YouTube
 import tensorflow as tf
