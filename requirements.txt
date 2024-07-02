@@ -8,7 +8,7 @@ plotly
 pydeck
 pytube
 Requests
-streamlit
+streamlit==0.84.2
 tqdm
 ultralytics
 git+https://www.github.com/keras-team/keras-contrib.git
