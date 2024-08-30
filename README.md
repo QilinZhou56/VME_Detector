@@ -15,8 +15,8 @@ You can find the project report [here](https://github.com/QilinZhou56/VME_Detect
 streamlit run cv_models.py
 ```
 **Note:** Users with Shared Google Drive Access would be advised to use google drive to access our app first, as it is the fastest approach with no bugs. No Download needed!!!
-## Application Use （Public; hosted by streamlit)
-This is the associated [URL](https://vmedetector-7bsaxaqq9o7wrahnbnbqxk.streamlit.app/). ***Thanks to Streamlit and Snowflake, you could now run directly on this URL!!!***. For any further emerging problems, please email at [qilinzhou888@gmail.com](mailto:qilinzhou888@gmail.com). Also, we are working on to move the large files in GitHub to other storage systems. We currently push here just for temporary demonstration.
+## Application Use 
+Users should download weights at [https://drive.google.com/drive/folders/1CaCDrzdqK_Nx_ZMj6eVXXsDuwv6nm9bz?usp=drive_link]. They could also download sample video files at [https://drive.google.com/drive/folders/1GGrGFj3aGKB7I294s7Y-GpIbd2vm9kZ1?usp=drive_link]. For any further emerging problems, please email at [qilinzhou888@gmail.com](mailto:qilinzhou888@gmail.com). Also, we are working on to move the large files in GitHub to other storage systems. We currently push here just for temporary demonstration.
 
 ## Project Overview
 ![schema](Marine%20Species%20Detection%20OpenCV/schema.png)
