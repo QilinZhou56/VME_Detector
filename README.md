@@ -10,7 +10,7 @@ You can find the project report [here](https://github.com/QilinZhou56/VME_Detect
 
 ## 
 
-## Application Use （Local; preferred one as all tasks worked well)
+## Application Use 
 ```bash
 streamlit run cv_models.py
 ```
